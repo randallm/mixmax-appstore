@@ -1,6 +1,11 @@
-# Giphy Slash Command for Mixmax
+# App Store Slash Command for Mixmax
 
-This is an open source Mixmax Slash Command. See <http://developer.mixmax.com/docs/overview-slash-commands#tutorial-building-mygiphy> for more information about how to use this example code in Mixmax.
+This is an open source Mixmax Slash Command. See <http://developer.mixmax.com/docs/overview-slash-commands#tutorial-building-mygiphy> for more information about how to use this example code in Mixmax. Forked from https://github.com/mixmaxhq/giphy-example-slash-command as a starting point for playing around with the Mixmax Integrations API.
+
+## Screenshots
+
+![](screen1.png)
+![](screen2.png)
 
 ## Running locally
 

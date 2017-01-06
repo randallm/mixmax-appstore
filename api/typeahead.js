@@ -1,4 +1,3 @@
-var key = require('../utils/key');
 var request = require('request');
 var _ = require('underscore');
 
@@ -15,34 +14,37 @@ module.exports = function(req, res) {
   }
 
   request({
-    url: 'http://api.giphy.com/v1/gifs/search',
+    url: 'https://itunes.apple.com/search',
     qs: {
-      q: term,
-      limit: 15,
-      api_key: key
+      term: term,
+      country: 'us',
+      entity: 'software'
     },
     gzip: true,
     json: true,
     timeout: 10 * 1000
   }, function(err, response) {
-    if (err || response.statusCode !== 200 || !response.body || !response.body.data) {
+    if (err || response.statusCode !== 200 || !response.body) {
       res.status(500).send('Error');
       return;
     }
 
-    var results = _.chain(response.body.data)
-      .reject(function(image) {
-        return !image || !image.images || !image.images.fixed_height_small;
-      })
-      .map(function(image) {
+    var results = _.chain(response.body.results)
+      .map(function(app) {
         return {
-          title: '<img style="height:75px" src="' + image.images.fixed_height_small.url + '">',
-          text: 'http://giphy.com/' + image.id
+          title: `<div>
+                    <img src="${app.artworkUrl60}">
+                    <div style="width: calc(100% - 60px - .5em); height:60px; padding-left: .5em; display: inline-block;">
+                      <p style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">${app.trackName}</p>
+                      <p style="overflow: hidden; height: 3em; text-overflow: ellipsis; color: #889; font-weight: 400;">${app.description}</p>
+                    </div>
+                  </div>`,
+          text: `https://itunes.apple.com/lookup?id=${app.trackId}`
         };
       })
       .value();
 
-    if (results.length === 0) {
+    if (response.body.resultCount === 0) {
       res.json([{
         title: '<i>(no results)</i>',
         text: ''
@@ -51,5 +53,4 @@ module.exports = function(req, res) {
       res.json(results);
     }
   });
-
 };

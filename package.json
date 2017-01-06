@@ -1,21 +1,22 @@
 {
-  "name": "giphy-example-slash-command",
+  "name": "mixmax-appstore",
   "version": "0.0.1",
-  "description": "Giphy slash command for Mixmax",
+  "description": "Mixmax slash command for iTunes App Store",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "inspect": "nodemon --inspect server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/mixmaxhq/giphy-example-slash-command.git"
+    "url": "git://github.com/randallm/mixmax-appstore.git"
   },
-  "author": "Chanpory Rith <chanpory@mixmax.com> (https://mixmax.com/)",
+  "author": "Randall Ma <randall@randallma.com> (http://randallma.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mixmaxhq/giphy-example-slash-command/issues"
+    "url": "https://github.com/randallm/mixmax-appstore/issues"
   },
-  "homepage": "https://github.com/mixmaxhq/giphy-example-slash-command",
+  "homepage": "https://github.com/randallm/mixmax-appstore",
   "dependencies": {
     "body-parser": "^1.12.2",
     "cors": "^2.7.1",
